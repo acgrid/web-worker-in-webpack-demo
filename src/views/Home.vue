@@ -8,11 +8,16 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import Worker from '@/test.worker'
 
 export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  mounted () {
+    const w = new Worker()
+    w.postMessage('Test')
   }
 }
 </script>
