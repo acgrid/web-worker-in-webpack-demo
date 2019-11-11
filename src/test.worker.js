@@ -1,4 +1,4 @@
 self.onmessage = msg => {
-  console.log(msg)
+  console.log('From Window', msg)
   self.postMessage({ foo: 'bar' })
 }

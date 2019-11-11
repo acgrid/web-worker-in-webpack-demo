@@ -17,6 +17,9 @@ export default {
   },
   mounted () {
     const w = new Worker()
+    w.onmessage = event => {
+      console.log('From worker', event)
+    }
     w.postMessage('Test')
   }
 }
