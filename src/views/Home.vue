@@ -7,8 +7,10 @@
 
 <script>
 // @ is an alias to /src
+import range from 'loadsh/range'
 import HelloWorld from '@/components/HelloWorld.vue'
 import Worker from '@/test.worker'
+import SumWorker from '@/workers/sum.worker'
 
 export default {
   name: 'home',
@@ -21,6 +23,9 @@ export default {
       console.log('From worker', event)
     }
     w.postMessage('Test')
+    const wSum = new SumWorker()
+    wSum.onmessage = ({ data }) => console.log('sum', data)
+    wSum.postMessage(range(1, 100000))
   }
 }
 </script>
