@@ -11,6 +11,7 @@ import range from 'loadsh/range'
 import HelloWorld from '@/components/HelloWorld.vue'
 import Worker from '@/test.worker'
 import SumWorker from '@/workers/sum.worker'
+import RightWorker from '@/workers/sumRight.worker'
 
 export default {
   name: 'home',
@@ -26,6 +27,9 @@ export default {
     const wSum = new SumWorker()
     wSum.onmessage = ({ data }) => console.log('sum', data)
     wSum.postMessage(range(1, 100000))
+    const wRight = new RightWorker()
+    wRight.onmessage = ({ data }) => console.log('right', data)
+    wRight.postMessage('hello')
   }
 }
 </script>
